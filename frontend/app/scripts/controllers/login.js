@@ -2,27 +2,28 @@
 
 angular
   .module("psJwtApp")
-  .controller("LoginCtrl", function($scope, auth, alert) {
+  .controller("LoginCtrl", function($scope, auth, alert, $auth) {
     $scope.submit = function() {
-      auth
-        .login($scope.email, $scope.password)
-        .then(function(data) {
+      $auth
+        .login({ email: $scope.email, password: $scope.password })
+        .then(function(res) {
           alert(
             "success",
             "Welcome",
-            `Thanks for coming back ${data.user.email}!`
+            `Thanks for coming back ${res.data.user.email}!`
           );
         })
         .catch(handleError);
     };
-    $scope.google = function() {
-      auth
-        .googleAuth()
-        .then(function(data) {
+    $scope.authenticate = function(provider) {
+      $auth
+        .authenticate(provider)
+        .then(function(res) {
+          // console.log("DATA", data);
           alert(
             "success",
             "Welcome",
-            "Thanks for coming back " + data.user.displayName + "!"
+            "Thanks for coming back " + res.data.user.displayName + "!"
           );
         })
         .catch(handleError);

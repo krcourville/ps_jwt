@@ -1,0 +1,3 @@
+exports.FACEBOOK_SECRET = "5eb3d71f3715f10b1a36354d744c8a30";
+exports.JWT_SECRET = "*Password4321";
+exports.GOOGLE_SECRET = "lWfQBKSIRo1z9sDAsVJXp7GN";

@@ -4,7 +4,7 @@ angular
   .module("psJwtApp")
   .controller("JobsCtrl", function($scope, $http, API_URL, alert) {
     $http
-      .get(API_URL + "jobs")
+      .get("http://localhost:1337/job")
       .then(res => {
         $scope.jobs = res.data;
       })

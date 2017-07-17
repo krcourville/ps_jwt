@@ -12,8 +12,12 @@
     <br>
     <a class="text-muted pull-right" ui-sref="register">Create account</a>
 
-    <button class="btn btn-lg btn-default btn-block" type="button" ng-click="google()">
+    <button class="btn btn-lg btn-default btn-block" type="button" ng-click="authenticate('google')">
 			Google
+    </button>
+
+    <button class="btn btn-lg btn-default btn-block" type="button" ng-click="authenticate('facebook')">
+			Facebook
     </button>
   </form>
 

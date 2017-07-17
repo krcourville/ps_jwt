@@ -1,6 +1,12 @@
 angular
   .module("psJwtApp")
-  .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function(
+    $stateProvider,
+    $urlRouterProvider,
+    $httpProvider,
+    $authProvider,
+    API_URL
+  ) {
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -28,9 +34,23 @@ angular
         controller: "LogoutCtrl",
       });
 
+    $authProvider.loginUrl = API_URL + "auth/login";
+    $authProvider.signupUrl = API_URL + "auth/register";
+
+    $authProvider.google({
+      clientId:
+        "107784561122-cc7a13aifqmg94dqdemfv975kvu89qho.apps.googleusercontent.com",
+      url: API_URL + "auth/google",
+    });
+
+    $authProvider.facebook({
+      clientId: "128442801095526",
+      url: API_URL + "auth/facebook",
+    });
+
     $httpProvider.interceptors.push("authInterceptor");
   })
-  .constant("API_URL", "http://localhost:3000/")
+  .constant("API_URL", "http://localhost:1337/")
   .run(function($window) {
     var params = $window.location.search.substring(1);
     if (

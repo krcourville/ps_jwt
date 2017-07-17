@@ -1,10 +1,7 @@
 "use strict";
 
-angular
-  .module("psJwtApp")
-  .controller("LogoutCtrl", function(authToken, $state) {
-    console.log("AUTH_LOGOUT");
-    authToken.removeToken();
+angular.module("psJwtApp").controller("LogoutCtrl", function($state, $auth) {
+  $auth.logout();
 
-    $state.go("main");
-  });
+  $state.go("main");
+});

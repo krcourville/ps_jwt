@@ -5,6 +5,7 @@ var schema = new mongoose.Schema({
   email: { type: String, required: false, trim: true },
   password: { type: String, required: false },
   googleId: { type: String, required: false },
+  facebookId: String,
   displayName: { type: String, required: false },
 });
 
